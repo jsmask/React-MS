@@ -1,5 +1,8 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Layout } from 'antd';
+
+const { Header, Sider, Content } = Layout;
 
 function Admin(props) {
     const { userReducer,history } = props;
@@ -17,7 +20,13 @@ function Admin(props) {
 
     return (
         <>
-            <h5>Hi~ {userReducer.info && userReducer.info.username}</h5>
+        <Layout style={{height:"100%"}}>
+            <Sider style={{background:"#753a88"}}>Sider</Sider>
+            <Layout>
+                <Header style={{backgroundImage:"-webkit-gradient(linear,right top,left top,from(#cc2b5e),to(#753a88))"}}>Header</Header>
+                <Content>Content</Content>
+            </Layout>
+        </Layout>
         </>
     )
 }
