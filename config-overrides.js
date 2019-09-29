@@ -19,7 +19,11 @@ module.exports = override(
     "@request":resolve("src/request"),
     "@components":resolve("src/components"),
     "@store":resolve("src/store"),
-    "@utils":resolve("src/utils")
+    "@utils":resolve("src/utils"),
+    "@less":resolve("src/assets/less"),
+    "@css":resolve("src/assets/css"),
+    "@images":resolve("src/assets/images"),
+    "@pages":resolve("src/pages")
   }),
   addDecoratorsLegacy()
 );

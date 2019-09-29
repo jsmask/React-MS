@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import "@assets/less/login.less"
+import "@less/login.less"
 import { Icon, Input, Button, Checkbox, Form, message } from 'antd';
 import { reqLogin } from '@request/api';
 import { connect } from 'react-redux';
