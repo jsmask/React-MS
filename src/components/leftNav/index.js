@@ -1,5 +1,5 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import '@less/left-nav.less';
 import { Menu, Icon } from 'antd';
 import { connect } from 'react-redux';
@@ -12,8 +12,6 @@ const { SubMenu, Item } = Menu;
 function LeftNav(props) {
     const { setMenuCollapsed, globalReducer } = props;
 
-    console.log(MenuConfig)
-
     useEffect(() => {
         return () => {
 
@@ -24,34 +22,42 @@ function LeftNav(props) {
         setMenuCollapsed(!globalReducer.isCollapsed);
     }
 
-    const createMenuItem=(obj)=>{
+    const createMenuItem = (obj) => {
         const { key, icon, title, children } = obj;
 
         return (
-            children&&children.length>0?
-            <SubMenu key={key}
-                title={
-                    <span>
-                        <Icon type={icon} />
-                        <span>{title}</span>
-                    </span>
-                }
-            >
-            {
-                children.map(child =>createMenuItem(child))
-            }
-            </SubMenu>
-            :
-            <Item key={key}>
-                <Link to={key} replace>
-                    {
-                        icon&&icon!==""?<Icon type={icon} />:null
+            children && children.length > 0 ?
+                <SubMenu key={key}
+                    title={
+                        <span>
+                            <Icon type={icon} />
+                            <span>{title}</span>
+                        </span>
                     }
-                    <span>{title}</span>
-                </Link>
-            </Item>
+                >
+                    {
+                        children.map(child => createMenuItem(child))
+                    }
+                </SubMenu>
+                :
+                <Item key={key}>
+                    <Link to={key} replace>
+                        {
+                            icon && icon !== "" ? <Icon type={icon} /> : null
+                        }
+                        <span>{title}</span>
+                    </Link>
+                </Item>
         )
     }
+
+    const [openKeys, setOpenKeys] = useState(['/home'])
+
+
+    const onOpenChange = keys => {
+        const latestOpenKey = keys.find(key => openKeys.indexOf(key) === -1);
+        setOpenKeys([latestOpenKey])
+    };
 
     return (
         <div className="left-nav">
@@ -65,14 +71,16 @@ function LeftNav(props) {
 
 
             <div className="left-nav-menu-box">
-                <Menu mode="inline" theme="dark">
-
+                <Menu
+                    mode="inline" theme="dark"
+                    openKeys={openKeys}
+                    onOpenChange={onOpenChange}
+                >
                     {
                         MenuConfig.map(item => {
                             return createMenuItem(item)
                         })
                     }
-
                 </Menu>
 
             </div>
