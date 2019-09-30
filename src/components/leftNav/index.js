@@ -3,19 +3,21 @@ import React, { useEffect, useState } from 'react';
 import '@less/left-nav.less';
 import { Menu, Icon } from 'antd';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom'
+import { Link,withRouter } from 'react-router-dom'
 import { setMenuCollapsed } from '@store/action';
 import MenuConfig from "@config/menuConfig.json"
 
 const { SubMenu, Item } = Menu;
 
 function LeftNav(props) {
-    const { setMenuCollapsed, globalReducer, pathname } = props;
-    const openkey = `/${pathname.split("/")[1]}`;
-    const [openKeys, setOpenKeys] = useState([openkey]);
+    const { setMenuCollapsed, globalReducer, location } = props;
+
+    let pathname= location.pathname;
+
+    let openkey =`/${pathname.split("/")[1]}`;
+    let [openKeys, setOpenKeys] = useState([openkey]);
 
     useEffect(() => {
-
         return () => {
 
         }
@@ -75,7 +77,7 @@ function LeftNav(props) {
                     mode="inline" theme="dark"
                     openKeys={openKeys}
                     onOpenChange={onOpenChange}
-                    defaultSelectedKeys={[pathname]}
+                    selectedKeys={[pathname]}
                     defaultOpenKeys={[openkey]}
                 >
                     {
@@ -91,4 +93,4 @@ function LeftNav(props) {
 
 export default connect((state, props) => Object.assign({}, props, state), {
     setMenuCollapsed
-})(LeftNav);
+})(withRouter(LeftNav));
