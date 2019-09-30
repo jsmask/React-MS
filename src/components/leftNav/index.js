@@ -3,11 +3,16 @@ import React, { useEffect } from 'react';
 import '@less/left-nav.less';
 import { Menu, Icon } from 'antd';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom'
 import { setMenuCollapsed } from '@store/action';
-const { SubMenu } = Menu;
+import MenuConfig from "@config/menuConfig.json"
+
+const { SubMenu, Item } = Menu;
 
 function LeftNav(props) {
     const { setMenuCollapsed, globalReducer } = props;
+
+    console.log(MenuConfig)
 
     useEffect(() => {
         return () => {
@@ -17,6 +22,35 @@ function LeftNav(props) {
 
     const changeCollapsed = () => {
         setMenuCollapsed(!globalReducer.isCollapsed);
+    }
+
+    const createMenuItem=(obj)=>{
+        const { key, icon, title, children } = obj;
+
+        return (
+            children&&children.length>0?
+            <SubMenu key={key}
+                title={
+                    <span>
+                        <Icon type={icon} />
+                        <span>{title}</span>
+                    </span>
+                }
+            >
+            {
+                children.map(child =>createMenuItem(child))
+            }
+            </SubMenu>
+            :
+            <Item key={key}>
+                <Link to={key} replace>
+                    {
+                        icon&&icon!==""?<Icon type={icon} />:null
+                    }
+                    <span>{title}</span>
+                </Link>
+            </Item>
+        )
     }
 
     return (
@@ -32,52 +66,13 @@ function LeftNav(props) {
 
             <div className="left-nav-menu-box">
                 <Menu mode="inline" theme="dark">
-                    <Menu.Item key="1">
-                        <Icon type="bank" />
-                        <span>Home</span>
-                    </Menu.Item>
 
-                    <Menu.Item key="2">
-                        <Icon type="account-book" />
-                        <span>Income</span>
-                    </Menu.Item>
+                    {
+                        MenuConfig.map(item => {
+                            return createMenuItem(item)
+                        })
+                    }
 
-                    <SubMenu key="3"
-                        title={
-                            <span>
-                                <Icon type="profile" />
-                                <span>Form</span>
-                            </span>
-                        }
-                    >
-                        <Menu.Item key="3-1">Model</Menu.Item>
-                        <Menu.Item key="3-2">Prop</Menu.Item>
-                    </SubMenu>
-
-                    <SubMenu key="4"
-                        title={
-                            <span>
-                                <Icon type="database" />
-                                <span>Data</span>
-                            </span>
-                        }
-                    >
-                        <Menu.Item key="4-1">User</Menu.Item>
-                        <Menu.Item key="4-2">Role</Menu.Item>
-                    </SubMenu>
-
-                    <SubMenu key="5"
-                        title={
-                            <span>
-                                <Icon type="pie-chart" />
-                                <span>Charts</span>
-                            </span>
-                        }
-                    >
-                        <Menu.Item key="5-1">Bar</Menu.Item>
-                        <Menu.Item key="5-2">Line</Menu.Item>
-                        <Menu.Item key="5-3">Pie</Menu.Item>
-                    </SubMenu>
                 </Menu>
 
             </div>

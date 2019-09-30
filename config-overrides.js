@@ -23,7 +23,8 @@ module.exports = override(
     "@less":resolve("src/assets/less"),
     "@css":resolve("src/assets/css"),
     "@images":resolve("src/assets/images"),
-    "@pages":resolve("src/pages")
+    "@pages":resolve("src/pages"),
+    "@config":resolve("src/config")
   }),
   addDecoratorsLegacy()
 );

@@ -1,0 +1,51 @@
+[{
+    "title":"Home",
+    "key":"/home",
+    "icon":"bank"
+},{
+    "title":"Income",
+    "key":"/income",
+    "icon":"account-book"
+},{
+    "title":"Form",
+    "key":"/form",
+    "icon":"profile",
+    "children":[
+        {
+            "title":"Model",
+            "key":"/form/model"
+        },{
+            "title":"prop",
+            "key":"/form/prop"
+        }
+    ]
+},{
+    "title":"Data",
+    "key":"/data",
+    "icon":"database",
+    "children":[
+        {
+            "title":"User",
+            "key":"/data/user"
+        },{
+            "title":"Role",
+            "key":"/data/role"
+        }
+    ]
+},{
+    "title":"Charts",
+    "key":"/charts",
+    "icon":"pie-chart",
+    "children":[
+        {
+            "title":"Bar",
+            "key":"/charts/bar"
+        },{
+            "title":"Line",
+            "key":"/charts/line"
+        },{
+            "title":"Pie",
+            "key":"/charts/pie"
+        }
+    ]
+}]
