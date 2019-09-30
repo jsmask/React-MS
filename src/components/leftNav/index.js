@@ -13,7 +13,7 @@ function LeftNav(props) {
     const { setMenuCollapsed, globalReducer, pathname } = props;
     const openkey = `/${pathname.split("/")[1]}`;
     const [openKeys, setOpenKeys] = useState([openkey]);
-    
+
     useEffect(() => {
 
         return () => {
