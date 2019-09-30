@@ -48,8 +48,8 @@ function Admin(props) {
                             <Route path="/home" exact component={Home}></Route>
                             <Route path="/income"  exact component={Income}></Route>
 
-                            <Route path="/from/model"  exact component={Model}></Route>
-                            <Route path="/from/prop"  exact component={Prop}></Route>
+                            <Route path="/form/model"  exact component={Model}></Route>
+                            <Route path="/form/prop"  exact component={Prop}></Route>
 
                             <Route path="/data/user"  exact component={User}></Route>
                             <Route path="/data/role"  exact component={Role}></Route>
