@@ -10,9 +10,12 @@ import MenuConfig from "@config/menuConfig.json"
 const { SubMenu, Item } = Menu;
 
 function LeftNav(props) {
-    const { setMenuCollapsed, globalReducer } = props;
-
+    const { setMenuCollapsed, globalReducer, pathname } = props;
+    const openkey = `/${pathname.split("/")[1]}`;
+    const [openKeys, setOpenKeys] = useState([openkey]);
+    
     useEffect(() => {
+
         return () => {
 
         }
@@ -20,14 +23,15 @@ function LeftNav(props) {
 
     const changeCollapsed = () => {
         setMenuCollapsed(!globalReducer.isCollapsed);
+        setOpenKeys([])
     }
 
-    const createMenuItem = (obj) => {
+    const createMenuItem = obj => {
         const { key, icon, title, children } = obj;
-
         return (
             children && children.length > 0 ?
                 <SubMenu key={key}
+                    popupClassName="left-nav-popup"
                     title={
                         <span>
                             <Icon type={icon} />
@@ -51,9 +55,6 @@ function LeftNav(props) {
         )
     }
 
-    const [openKeys, setOpenKeys] = useState(['/home'])
-
-
     const onOpenChange = keys => {
         const latestOpenKey = keys.find(key => openKeys.indexOf(key) === -1);
         setOpenKeys([latestOpenKey])
@@ -69,12 +70,13 @@ function LeftNav(props) {
                 React MS
             </div>
 
-
             <div className="left-nav-menu-box">
                 <Menu
                     mode="inline" theme="dark"
                     openKeys={openKeys}
                     onOpenChange={onOpenChange}
+                    defaultSelectedKeys={[pathname]}
+                    defaultOpenKeys={[openkey]}
                 >
                     {
                         MenuConfig.map(item => {
@@ -82,9 +84,7 @@ function LeftNav(props) {
                         })
                     }
                 </Menu>
-
             </div>
-
         </div>
     )
 }

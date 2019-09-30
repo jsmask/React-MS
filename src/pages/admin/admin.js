@@ -37,7 +37,7 @@ function Admin(props) {
         <Fragment>
             <Layout style={{ height: "100%" }}>
                 <Sider className="main-sider" collapsed={globalReducer.isCollapsed}>
-                    <LeftNav></LeftNav>
+                    <LeftNav pathname={props.location.pathname}></LeftNav>
                 </Sider>
                 <Layout>
                     <Header className="main-header">
