@@ -24,9 +24,11 @@ function App(props) {
         
         <Route path="/login" component={Login} />
 
+        <Route path="/404" exact component={Error} />
+
         <Route path="/" component={Admin} />
 
-        <Route path="/404" component={Error} />
+        
 
       </Switch>
       {
