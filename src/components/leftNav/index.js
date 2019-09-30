@@ -17,12 +17,6 @@ function LeftNav(props) {
     let openkey =`/${pathname.split("/")[1]}`;
     let [openKeys, setOpenKeys] = useState([openkey]);
 
-    useEffect(() => {
-        return () => {
-
-        }
-    }, [])
-
     const changeCollapsed = () => {
         setMenuCollapsed(!globalReducer.isCollapsed);
         setOpenKeys([])
@@ -57,10 +51,25 @@ function LeftNav(props) {
         )
     }
 
+    let createMenuContent=()=>{
+        return (           
+            MenuConfig.map(item => {
+                return createMenuItem(item)
+            })          
+        )
+    }
+
     const onOpenChange = keys => {
         const latestOpenKey = keys.find(key => openKeys.indexOf(key) === -1);
         setOpenKeys([latestOpenKey])
     };
+
+    useEffect(() => {
+
+        return () => {
+
+        }
+    }, [])
 
     return (
         <div className="left-nav">
@@ -81,9 +90,7 @@ function LeftNav(props) {
                     defaultOpenKeys={[openkey]}
                 >
                     {
-                        MenuConfig.map(item => {
-                            return createMenuItem(item)
-                        })
+                        createMenuContent()
                     }
                 </Menu>
             </div>
