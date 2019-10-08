@@ -17,7 +17,7 @@ import Role from '@pages/data/role';
 import Prop from '@pages/form/prop';
 import Model from '@pages/form/model';
 
-
+import Bread from '@components/bread'
 
 const { Header, Sider, Content } = Layout;
 
@@ -35,6 +35,7 @@ function Admin(props) {
         }
     }, [])
 
+
     return (
         <Fragment>
             <Layout style={{ height: "100%" }}>
@@ -43,22 +44,25 @@ function Admin(props) {
                 </Sider>
                 <Layout>
                     <Header className="main-header">
-                      <HeaderNav></HeaderNav>
+                        <HeaderNav></HeaderNav>
                     </Header>
+
+                    <Bread></Bread>
+
                     <Content className="main-content">
                         <Switch>
                             <Route path="/home" exact component={Home}></Route>
-                            <Route path="/income"  exact component={Income}></Route>
+                            <Route path="/income" exact component={Income}></Route>
 
-                            <Route path="/form/model"  exact component={Model}></Route>
-                            <Route path="/form/prop"  exact component={Prop}></Route>
+                            <Route path="/form/model" exact component={Model}></Route>
+                            <Route path="/form/prop" exact component={Prop}></Route>
 
-                            <Route path="/data/user"  exact component={User}></Route>
-                            <Route path="/data/role"  exact component={Role}></Route>
+                            <Route path="/data/user" exact component={User}></Route>
+                            <Route path="/data/role" exact component={Role}></Route>
 
-                            <Route path="/charts/bar"  exact component={Bar}></Route>
-                            <Route path="/charts/line"  exact component={Line}></Route>
-                            <Route path="/charts/Pie"  exact component={Pie}></Route>
+                            <Route path="/charts/bar" exact component={Bar}></Route>
+                            <Route path="/charts/line" exact component={Line}></Route>
+                            <Route path="/charts/Pie" exact component={Pie}></Route>
 
                             <Redirect to="/home" />
                         </Switch>
