@@ -13,6 +13,7 @@ function HeaderNav(props) {
     const onLogout = () => {
          Modal.confirm({
             title: 'Do you want to log out?',
+            centered:true,
             onOk() {
                 history.replace("/login");
                 setLogout();
