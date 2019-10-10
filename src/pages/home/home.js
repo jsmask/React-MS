@@ -63,7 +63,6 @@ function Home() {
                 </Row>
             </div>
 
-
             <Descriptions title="Project information" bordered style={{ margin: 20 }}>
                 <Descriptions.Item label="Product" span={3}>React MS</Descriptions.Item>
                 <Descriptions.Item label="Start date" span={3}>2019-09-28</Descriptions.Item>

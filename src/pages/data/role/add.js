@@ -77,7 +77,7 @@ function Add(props) {
                             message: "Please input role's describe",
                         },
                     ],
-                })(<TextArea placeholder="Please input role's describe" autosize={{ minRows: 2, maxRows: 6 }} />)}
+                })(<TextArea placeholder="Please input role's describe" autosize={{ minRows: 3, maxRows: 3 }} />)}
             </Item>
             <Item {...formItemLayout2} label="ATK">
                 {getFieldDecorator('ATK', { initialValue: info ? info.attribute.ATK : 0 })(
