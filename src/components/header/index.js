@@ -3,6 +3,7 @@ import '@less/header.less'
 import { connect } from 'react-redux';
 import { setLogout } from "@store/action"
 import { withRouter } from 'react-router-dom'
+import { Icon } from 'antd'
 
 import { Modal } from 'antd'
 
@@ -11,9 +12,9 @@ function HeaderNav(props) {
     const { userReducer, history, setLogout } = props;
 
     const onLogout = () => {
-         Modal.confirm({
+        Modal.confirm({
             title: 'Do you want to log out?',
-            centered:true,
+            centered: true,
             onOk() {
                 history.replace("/login");
                 setLogout();
@@ -24,8 +25,9 @@ function HeaderNav(props) {
     return (
         <div className="header-nav">
             <h6>
-                欢迎<span>{userReducer.info.username}</span>
-                <button onClick={onLogout}>退出</button>
+                <Icon type="user" />
+                <span>{userReducer.info.username}</span>
+                <button onClick={onLogout}>Sign out</button>
             </h6>
         </div>
     )

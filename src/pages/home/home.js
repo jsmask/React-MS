@@ -12,9 +12,9 @@ function Home() {
     async function getHomeInfo() {
         let res = await reqHomeInfo();
         if (res.status === 1) {
-            setAddNum(res.data.add_num)
-            setTotalIncome(res.data.total_income)
+            setAddNum(res.data.add_num)       
             setTotalUser(res.data.total_user)
+            setTotalIncome(res.data.total_income)
             setVisitsNum(res.data.visits_num)
         }
     }
@@ -77,7 +77,7 @@ function Home() {
                     <Tag color="#f26e63">axios</Tag>
                     <Tag color="#f25e23">echarts</Tag>
                 </Descriptions.Item>
-                <Descriptions.Item label="Other Info" span={3}></Descriptions.Item>
+                <Descriptions.Item label="Other Info" span={3}>None</Descriptions.Item>
             </Descriptions>
         </Fragment>
     )
