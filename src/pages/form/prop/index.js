@@ -12,6 +12,7 @@ function Prop() {
     const [page, setPage] = useState(1);
     const [data, setData] = useState([]);
 
+    const [searchData, setSearchData] = useState(null);
     const [typeValue, setTypeValue] = useState("");
     const [searchValue, setSearchValue] = useState("");
 
@@ -86,7 +87,7 @@ function Prop() {
 
     const handleTableChange = event => {
         const { current } = event;
-        setPage(current)
+        setPage(current);
     }
 
     async function deleteProp(obj) {
@@ -107,17 +108,18 @@ function Prop() {
     async function getListData() {
         if (loading) return;
         setLoading(true);
+        
         const res = await reqPropList({
             page,
-            value: searchValue,
-            type: typeValue
+            ...searchData
         });
         setLoading(false);
         if (res.status === 1) {
             setData([...res.data.list]);
             setPagination({
                 total: res.data.total,
-                pageSize: 5
+                pageSize: 5,
+                current: page
             })
         } else {
             message.error(res.text);
@@ -145,7 +147,11 @@ function Prop() {
     }
 
     function onSearch() {
-        getListData();
+        setSearchData({
+            value: searchValue,
+            type: typeValue
+        })
+        setPage(1);
     }
 
 
@@ -157,6 +163,13 @@ function Prop() {
 
         };
     }, [page]);
+
+    useEffect(() => {
+        getListData();
+        return () => {
+
+        };
+    }, [searchData]);
     /* eslint-disable */
 
     return (
