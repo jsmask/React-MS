@@ -162,14 +162,7 @@ function Prop() {
         return () => {
 
         };
-    }, [page]);
-
-    useEffect(() => {
-        getListData();
-        return () => {
-
-        };
-    }, [searchData]);
+    }, [page,searchData]);
     /* eslint-disable */
 
     return (
