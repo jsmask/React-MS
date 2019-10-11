@@ -2,6 +2,7 @@
 import React, { useEffect } from 'react';
 import { Form, Input, Button, Slider, message } from 'antd';
 import { reqRoleRevise } from '@request/api';
+import { reqRoleAdd } from '../../../request/api';
 
 
 const Item = Form.Item;
@@ -28,25 +29,22 @@ function Add(props) {
     };
 
     useEffect(() => {
-        
+
         return () => {
 
         }
     }, [])
 
     function check() {
-        validateFields((err, values) => {
+        validateFields(async (err, values) => {
             if (!err) {
-                reqRoleRevise({
-                    data: values
-                }).then(res => {
-                    if (res.status === 1) {
-                        message.success(res.text);
-                        closeFn();
-                    } else {
-                        message.error(res.text);
-                    }
-                })
+                let res = info ? await reqRoleRevise({ data: values }) : await reqRoleAdd({ data: values });
+                if (res.status === 1) {
+                    message.success(res.text);
+                    closeFn();
+                } else {
+                    message.error(res.text);
+                }
             }
         });
     }
