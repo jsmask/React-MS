@@ -5,7 +5,7 @@ import '@less/admin.less'
 import LeftNav from '@components/leftNav';
 import HeaderNav from '@components/header';
 import Bread from '@components/bread'
-import { Route, Redirect, Switch } from 'react-router-dom';
+import { Route, Switch , Redirect } from 'react-router-dom';
 import { Home,Income,Model,Prop,User,Role,Bar,Line,Pie } from '@config/pageComponents';
 
 const { Header, Sider, Content } = Layout;
@@ -53,7 +53,8 @@ function Admin(props) {
                             <Route path="/charts/line" exact component={Line}></Route>
                             <Route path="/charts/Pie" exact component={Pie}></Route>
 
-                            <Redirect to="/home" />
+                            <Redirect to="/home"></Redirect>
+
                         </Switch>
                     </Content>
                 </Layout>
