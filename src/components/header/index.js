@@ -26,7 +26,7 @@ function HeaderNav(props) {
         <div className="header-nav">
             <h6>
                 <Icon type="user" />
-                <span>{userReducer.info.username}</span>
+                <span>{userReducer.info&&userReducer.info.username}</span>
                 <button onClick={onLogout}>Sign out</button>
             </h6>
         </div>

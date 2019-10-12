@@ -42,3 +42,5 @@ export const reqPropDelete = (params, isloading) => request({ url: "/prop/delete
 //获取统计数据
 export const reqEchartsData = (params, isloading) => request({ url: "/echarts/data", method: "GET", params }, isloading);
 
+//获取收入支出列表
+export const reqIncomeList = params => request({ url: "/income/list", method: "POST", params }, false);
