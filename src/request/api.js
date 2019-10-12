@@ -39,3 +39,6 @@ export const reqPropAdd = (params, isloading) => request({ url: "/prop/add", met
 //删除道具信息
 export const reqPropDelete = (params, isloading) => request({ url: "/prop/delete", method: "POST", params }, isloading);
 
+//获取统计数据
+export const reqEchartsData = (params, isloading) => request({ url: "/echarts/data", method: "GET", params }, isloading);
+

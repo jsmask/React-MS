@@ -30,12 +30,14 @@ function Prop() {
         {
             title: 'Name',
             dataIndex: "name",
-            key: 'name'
+            key: 'name',
+            width: 150
         },
         {
             title: 'Image',
             dataIndex: "image",
             key: 'image',
+            width:100,
             render: text => (
                 <img style={{ width: 50, height: 50, objectFit: "cover" }} src={text} alt="" />
             )
@@ -75,6 +77,7 @@ function Prop() {
         {
             title: 'Action',
             key: 'action',
+            width:150,
             render: obj => (
                 <>
                     <span className="tab-revise-btn">revise</span>
