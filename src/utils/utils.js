@@ -25,7 +25,6 @@ export const preload = (images, fn, progress) => {
     })
 }
 
-
 /**
  * 查询对象数组
  * @param arr    : 对象数组
@@ -40,7 +39,6 @@ export const queryOArr = (arr, key, value) => {
     return _arr;
 }
 
-
 /**
  * 转换0 1值
  * @param num  : 数值
@@ -48,3 +46,16 @@ export const queryOArr = (arr, key, value) => {
 export const change0To1 = num => {
     return ~~num === 1 ? 0 : 1
 }
+
+/**
+ * 文件转base64
+ * @param file : 文件对象
+ */
+export const getBase64 = file => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = error => reject(error);
+    });
+  }

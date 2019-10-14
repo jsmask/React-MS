@@ -44,3 +44,6 @@ export const reqEchartsData = (params, isloading) => request({ url: "/echarts/da
 
 //获取收入支出列表
 export const reqIncomeList = params => request({ url: "/income/list", method: "POST", params }, false);
+
+//删除道具图片
+export const reqPropDeleteImg = (params, isloading) => request({ url: "/prop/deleteimg", method: "POST", params }, isloading);

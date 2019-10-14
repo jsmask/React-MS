@@ -8,21 +8,26 @@ const { Option } = Select;
 
 function PropList(props) {
 
-    const { history } = props;
+    const { history, location } = props;
+
+    const historyPage = location && location.query ? location.query.page : 1;
+    const historySearchData = location && location.query ? location.query.searchData : null;
+    const historySearchValue = historySearchData ? historySearchData["value"] : "";
+    const historySearchType = historySearchData ? historySearchData["type"] : "";
 
     const [loading, setLoading] = useState(false);
     const [pagination, setPagination] = useState({});
-    const [page, setPage] = useState(1);
+    const [page, setPage] = useState(historyPage);
     const [data, setData] = useState([]);
 
     const [searchData, setSearchData] = useState(null);
-    const [typeValue, setTypeValue] = useState("");
-    const [searchValue, setSearchValue] = useState("");
+    const [typeValue, setTypeValue] = useState(historySearchValue);
+    const [searchValue, setSearchValue] = useState(historySearchType);
 
     const btnsRender = () => {
         return (
             <Fragment>
-                <Button type="primary" className="no-margin-top" onClick={onEditProp}>
+                <Button type="primary" className="no-margin-top" onClick={onEditProp.bind(this, null)}>
                     <Icon type="plus-circle" /> Add
                 </Button>
             </Fragment>
@@ -153,14 +158,30 @@ function PropList(props) {
     }
 
     async function onEditProp(obj) {
-        if (!obj) return history.push("/form/prop/edit");
+        if (!obj) {
+            history.replace({
+                pathname: "/form/prop/edit",
+                query: {
+                    page,
+                    searchData
+                }
+            });
+            return false;
+        }
         let res = await reqPropInfo({
             id: obj._id,
         });
-        if (res.status !== 1) return message.error(res.text);
-        history.push({
+        if (res.status !== 1) {
+            message.error(res.text);
+            return false;
+        }
+        history.replace({
             pathname: "/form/prop/edit",
-            query: res.data
+            query: {
+                page,
+                searchData,
+                info: res.data
+            }
         });
     }
 
