@@ -83,7 +83,7 @@ function UploadImages(props) {
                 {
                     fileList.length >= 1 ? null : (
                         <div>
-                            <Icon type="plus" style={{ fontSize: 24 }} />
+                            <Icon type="plus" style={{ fontSize: 24, color: "#666" }} />
                             <div style={{ marginTop: 8, color: "#666" }}>Upload</div>
                         </div>
                     )
