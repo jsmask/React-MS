@@ -13,16 +13,17 @@ const { Header, Sider, Content } = Layout;
 function Admin(props) {
     const { userReducer, history, globalReducer } = props;
 
-    if (!userReducer.info) {
-        history.replace("/login")
-    }
+    
 
     useEffect(() => {
         console.log("In admin")
+        if (!userReducer.info) {
+            history.replace("/login")
+        }
         return () => {
             console.log("Out admin")
         }
-    }, [])
+    }, [userReducer, history])
 
 
     return (

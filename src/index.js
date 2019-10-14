@@ -5,7 +5,7 @@ import '@css/reset.css';
 import App from './App';
 import { Provider } from 'react-redux'
 import store from '@store/store'
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { getLocalUser } from '@utils/local';
 import { setUserInfo } from '@store/action';
 
@@ -19,7 +19,7 @@ if (localUser) {
 ReactDOM.render(
     <Provider store={store}>
         <Router>
-            <App />
+            <Route path="/" component={App} />
         </Router>
     </Provider>,
     document.getElementById('root'));
