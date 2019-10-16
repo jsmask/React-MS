@@ -40,4 +40,4 @@ function Richtext(props, ref) {
     )
 }
 
-export default React.forwardRef((props, ref) => Richtext(props, ref));
+export default React.forwardRef(Richtext);
