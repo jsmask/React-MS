@@ -1,10 +1,10 @@
-import React, { } from 'react';
+import React, { useRef } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Form, Input, Card, Button, Select, InputNumber, Switch, Icon, message } from 'antd';
 import UploadImages from '@components/uploadImages';
-import { reqPropRevise, reqPropAdd } from '@request/api';
+import { reqPropRevise, reqPropAdd, reqPropDeleteImg } from '@request/api';
 import { change0To1 } from '@utils/utils';
-import { reqPropDeleteImg } from '../../../request/api';
+import Richtext from '@components/richtext';
 
 const { Option } = Select;
 const { TextArea } = Input;
@@ -28,6 +28,7 @@ function PropEdit(props) {
     const { query } = location;
     const { page, info, searchData } = query
     const { getFieldDecorator, validateFields } = form;
+    const richtext = useRef(null);
 
     const isEdit = query.hasOwnProperty("info");
 
@@ -37,6 +38,7 @@ function PropEdit(props) {
             if (!err) {
                 const data = {
                     ...values,
+                    content: richtext.current.value,
                     status: change0To1(values.status)
                 }
                 let res = isEdit ? await reqPropRevise({ data }) : await reqPropAdd({ data });
@@ -105,7 +107,6 @@ function PropEdit(props) {
                         <UploadImages isEdit={isEdit} query={info} deleteFn={reqPropDeleteImg} />
                     </Form.Item>
 
-
                     <Form.Item {...formItemLayout} label="status">
                         {getFieldDecorator('status', {
                             valuePropName: "checked",
@@ -124,6 +125,11 @@ function PropEdit(props) {
                             <TextArea placeholder="Please input role's describe" autosize={{ minRows: 3, maxRows: 3 }} />
                         )}
                     </Form.Item>
+
+                    <Form.Item {...formItemLayout} label="detail">
+                        <Richtext ref={richtext} defaultValue={isEdit ? info.content : ""}></Richtext>
+                    </Form.Item>
+
                     <Form.Item {...formTailLayout} label="">
                         <Button type="primary" htmlType="submit">Submit</Button>
                     </Form.Item>
