@@ -145,11 +145,17 @@ function Role() {
     }, [page]);
     /* eslint-disable */
 
+    const closeModal = (refresh = true) => {
+        if (refresh) getListData();
+        setVisible(false)
+    }
+
     return (
         <>
             <Card title="Role Management" bordered={false} extra={btnsRender()}>
                 <Table className="main-table"
                     bordered={false}
+                    rowKey="_id"
                     columns={columns}
                     dataSource={data}
                     loading={loading}
@@ -168,7 +174,7 @@ function Role() {
                 destroyOnClose={true}
                 afterClose={()=>setInfo(null)}
             >
-                <Add info={info} closeFn={() => setVisible(false)}></Add>
+                <Add info={info} closeFn={closeModal}></Add>
             </Modal>
         </>
     )

@@ -226,6 +226,7 @@ function PropList(props) {
             } bordered={false} extra={btnsRender()}>
                 <Table className="main-table"
                     bordered={false}
+                    rowKey="_id"
                     columns={columns}
                     dataSource={data}
                     loading={loading}

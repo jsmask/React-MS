@@ -1,8 +1,7 @@
 
 import React, { useEffect } from 'react';
 import { Form, Input, Button, Slider, message } from 'antd';
-import { reqRoleRevise } from '@request/api';
-import { reqRoleAdd } from '../../../request/api';
+import { reqRoleRevise, reqRoleAdd } from '@request/api';
 
 
 const Item = Form.Item;

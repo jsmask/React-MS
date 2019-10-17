@@ -1,4 +1,5 @@
 import request from './request';
+import { IMAGESURL } from '@config/config';
 
 //登录接口
 export const reqLogin = (params, isloading) => request({ url: "/login", method: "POST", params }, isloading);
@@ -47,3 +48,21 @@ export const reqIncomeList = params => request({ url: "/income/list", method: "P
 
 //删除道具图片
 export const reqPropDeleteImg = (params, isloading) => request({ url: "/prop/deleteimg", method: "POST", params }, isloading);
+
+//上传图片
+export const reqUploadImages = params => request({ url: IMAGESURL, method: "POST", params }, false);
+
+//获取模型列表
+export const reqModelList = params => request({ url: "/model/list", method: "GET", params }, false);
+
+//获取模型信息
+export const reqModelInfo = params => request({ url: "/model/info", method: "POST", params }, false);
+
+//修改模型信息
+export const reqModelRevise = (params, isloading) => request({ url: "/model/revise", method: "POST", params }, isloading);
+
+//添加模型信息
+export const reqModelAdd = (params, isloading) => request({ url: "/model/add", method: "POST", params }, isloading);
+
+//删除模型信息
+export const reqModelDelete = (params, isloading) => request({ url: "/model/delete", method: "POST", params }, isloading);
