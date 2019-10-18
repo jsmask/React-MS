@@ -2,7 +2,7 @@
 
 主要使用了react+redux+antd来完成搭建
 
-![Image text](pic/img0.png)
+![Image home](./pic/img0.png)
 
 ### `npm start`
 
