@@ -98,7 +98,6 @@ function PropEdit(props) {
                             <InputNumber
                                 style={{ width: 200 }} min={1} max={999999}
                                 placeholder="Please input prop's price!"
-
                             />
                         )}
                     </Form.Item>

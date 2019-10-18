@@ -142,7 +142,7 @@ function Add(props) {
             </Item>
             <Item {...formTailLayout}>
                 <Button type="primary" onClick={check} style={{ marginRight: 20 }}>Save</Button>
-                <Button type="default" htmlType="submit" onClick={close}>Close</Button>
+                <Button type="default" htmlType="submit" onClick={close}>Cancel</Button>
             </Item>
         </div>
     )

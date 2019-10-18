@@ -63,12 +63,12 @@ function Home() {
                 </Row>
             </div>
 
-            
+
             <Descriptions title="Project information" bordered style={{ margin: 20 }} column={1}>
                 <Descriptions.Item label="Product">React MS</Descriptions.Item>
                 <Descriptions.Item label="Start date">2019-09-28</Descriptions.Item>
                 <Descriptions.Item label="Completion date">-- -- --</Descriptions.Item>
-                <Descriptions.Item label="Status"><Badge status="processing" text="Developing" /></Descriptions.Item>
+                <Descriptions.Item label="Status"><Badge status="warning" text="Warning" /></Descriptions.Item>
                 <Descriptions.Item label="Main technology">
                     <Tag color="#108ee9">React</Tag>
                     <Tag color="#333f50">Rudex</Tag>
@@ -77,9 +77,13 @@ function Home() {
                     <Tag color="#f26e63">axios</Tag>
                     <Tag color="#f25e23">echarts</Tag>
                 </Descriptions.Item>
-                <Descriptions.Item label="Other Info">None</Descriptions.Item>
+                <Descriptions.Item label="Other Info">
+                👽 Memory not optimized yet 
+                    <br />
+                    👻 Authority control not added yet 
+                </Descriptions.Item>
             </Descriptions>
-            
+
         </Fragment>
     )
 }

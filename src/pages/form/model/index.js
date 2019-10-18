@@ -29,6 +29,7 @@ function Model() {
             type: typeValue
         })
         setPage(1);
+        setSelectedRowKeys([]);
     }
 
     const onDeleteHandler = obj => {

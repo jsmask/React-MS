@@ -66,3 +66,12 @@ export const reqModelAdd = (params, isloading) => request({ url: "/model/add", m
 
 //删除模型信息
 export const reqModelDelete = (params, isloading) => request({ url: "/model/delete", method: "POST", params }, isloading);
+
+//获取用户列表
+export const reqUserList = params => request({ url: "/user/list", method: "GET", params }, false);
+
+//获取用户信息
+export const reqUserInfo = params => request({ url: "/user/info", method: "POST", params }, false);
+
+//设置用户背包
+export const reqSetBags = (params, isloading) => request({ url: "/user/setbags", method: "POST", params }, isloading);

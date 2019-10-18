@@ -13,8 +13,6 @@ const { Header, Sider, Content } = Layout;
 function Admin(props) {
     const { userReducer, history, globalReducer } = props;
 
-    
-
     useEffect(() => {
         console.log("In admin")
         if (!userReducer.info) {
@@ -24,7 +22,6 @@ function Admin(props) {
             console.log("Out admin")
         }
     }, [userReducer, history])
-
 
     return (
         <Fragment>
