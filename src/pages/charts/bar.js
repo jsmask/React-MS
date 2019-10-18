@@ -10,12 +10,9 @@ function Bar() {
     const [expense, setExpense] = useState([]);
     const [title, setTitle] = useState([]);
 
-    useEffect(() => {
-        getData();
-        return () => {
-
-        }
-    }, []);
+    useEffect(()=>{
+        getData()
+    },[])
 
     async function getData() {
         let res = await reqEchartsData({},false);
@@ -104,8 +101,6 @@ function Bar() {
                         <Spin size="large" style={{margin:"150px auto",display:"block"}} /> :
                         <ReactEcarts option={option} style={{ height: 600 }}></ReactEcarts>
                 }
-
-
             </Card>
 
         </Fragment>

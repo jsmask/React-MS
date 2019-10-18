@@ -9,12 +9,9 @@ function Line(){
     const [expense, setExpense] = useState([]);
     const [title, setTitle] = useState([]);
 
-    useEffect(() => {
-        getData();
-        return () => {
-
-        }
-    }, []);
+    useEffect(()=>{
+        getData()
+    },[])
 
     async function getData() {
         let res = await reqEchartsData({},false);

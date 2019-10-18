@@ -72,8 +72,8 @@ function Add(props) {
                     ],
                 })(
                     <Select style={{width:"100%"}}>
-                        <Select.Option value="statics">statics</Select.Option>
-                        <Select.Option value="dynamic">dynamic</Select.Option>
+                        <Select.Option value="statics">Statics</Select.Option>
+                        <Select.Option value="dynamic">Dynamic</Select.Option>
                     </Select>
                 )}
             </Item>

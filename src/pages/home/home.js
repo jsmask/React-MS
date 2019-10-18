@@ -4,7 +4,7 @@ import { reqHomeInfo } from '@request/api';
 
 function Home() {
 
-    const [addNum, setAddNum] = useState(0);   
+    const [addNum, setAddNum] = useState(0);
     const [totalUser, setTotalUser] = useState(0);
     const [totalIncome, setTotalIncome] = useState("$0");
     const [visitsNum, setVisitsNum] = useState(0);
@@ -12,7 +12,7 @@ function Home() {
     async function getHomeInfo() {
         let res = await reqHomeInfo();
         if (res.status === 1) {
-            setAddNum(res.data.add_num)       
+            setAddNum(res.data.add_num)
             setTotalUser(res.data.total_user)
             setTotalIncome(res.data.total_income)
             setVisitsNum(res.data.visits_num)
@@ -63,12 +63,13 @@ function Home() {
                 </Row>
             </div>
 
-            <Descriptions title="Project information" bordered style={{ margin: 20 }}>
-                <Descriptions.Item label="Product" span={3}>React MS</Descriptions.Item>
-                <Descriptions.Item label="Start date" span={3}>2019-09-28</Descriptions.Item>
-                <Descriptions.Item label="Completion date" span={3}>-- -- --</Descriptions.Item>
-                <Descriptions.Item label="Status" span={3}><Badge status="processing" text="Developing" /></Descriptions.Item>
-                <Descriptions.Item label="Main technology" span={3}>
+            
+            <Descriptions title="Project information" bordered style={{ margin: 20 }} column={1}>
+                <Descriptions.Item label="Product">React MS</Descriptions.Item>
+                <Descriptions.Item label="Start date">2019-09-28</Descriptions.Item>
+                <Descriptions.Item label="Completion date">-- -- --</Descriptions.Item>
+                <Descriptions.Item label="Status"><Badge status="processing" text="Developing" /></Descriptions.Item>
+                <Descriptions.Item label="Main technology">
                     <Tag color="#108ee9">React</Tag>
                     <Tag color="#333f50">Rudex</Tag>
                     <Tag color="#2db7f5">antd</Tag>
@@ -76,8 +77,9 @@ function Home() {
                     <Tag color="#f26e63">axios</Tag>
                     <Tag color="#f25e23">echarts</Tag>
                 </Descriptions.Item>
-                <Descriptions.Item label="Other Info" span={3}>None</Descriptions.Item>
+                <Descriptions.Item label="Other Info">None</Descriptions.Item>
             </Descriptions>
+            
         </Fragment>
     )
 }

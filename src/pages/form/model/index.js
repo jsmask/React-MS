@@ -1,7 +1,9 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import { Card, Button, Table, Divider, Icon, message, Modal } from 'antd'
+import { Card, Button, Table, Divider, Icon, message, Modal, Select,Input } from 'antd'
 import { reqModelList, reqModelDelete, reqModelInfo } from '@request/api';
 import Add from './add';
+
+const { Option } = Select;
 
 function Model() {
 
@@ -15,6 +17,19 @@ function Model() {
     const [visible, setVisible] = useState(false);
     const [info, setInfo] = useState(null);
     const [title, setTitle] = useState("");
+
+    const [searchData, setSearchData] = useState(null);
+    const [typeValue, setTypeValue] = useState("");
+    const [searchValue, setSearchValue] = useState("");
+
+
+    function onSearch() {
+        setSearchData({
+            value: searchValue,
+            type: typeValue
+        })
+        setPage(1);
+    }
 
     const onDeleteHandler = obj => {
         const id = obj._id;
@@ -118,14 +133,16 @@ function Model() {
         if (loading) return;
         setLoading(true);
         const res = await reqModelList({
-            page
+            page,
+            ...searchData
         });
         setLoading(false);
         if (res.status === 1) {
             setData([...res.data.list]);
             setPagination({
                 total: res.data.total,
-                pageSize: 10
+                pageSize: 10,
+                current: page
             })
         } else {
             message.error(res.text);
@@ -155,7 +172,7 @@ function Model() {
         return () => {
 
         };
-    }, [page]);
+    }, [page, searchData]);
     /* eslint-disable */
 
     const rowSelection = {
@@ -174,7 +191,22 @@ function Model() {
 
     return (
         <>
-            <Card title="Model Management" bordered={false} extra={btnsRender()}>
+            <Card title={
+                (
+                    <>
+                        <Select defaultValue="" value={typeValue} style={{ width: 150, marginRight: 10 }} onChange={e => setTypeValue(e)}>
+                            <Option value="">All</Option>
+                            <Option value="statics">Statics</Option>
+                            <Option value="dynamic">Dynamic</Option>
+                        </Select>
+                        <Input value={searchValue} style={{ width: 200, marginRight: 10 }}
+                            placeholder="input search text"
+                            onChange={e => setSearchValue(e.target.value)}
+                        />
+                        <Button type="primary" onClick={onSearch}>Search</Button>
+                    </>
+                )
+            } bordered={false} extra={btnsRender()}>
                 <Table className="main-table"
                     bordered={false}
                     rowKey="_id"
