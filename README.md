@@ -2,7 +2,7 @@
 
 主要使用了react+redux+antd来完成搭建
 
-
+![Image home](./pic/img0.png)
 
 ### `npm start`
 
@@ -12,7 +12,6 @@
 
 构建项目
 
-![Image home](./pic/img0.png)
 
 ![Image list](./pic/img1.png)
 
