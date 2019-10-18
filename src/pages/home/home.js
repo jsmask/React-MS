@@ -78,9 +78,9 @@ function Home() {
                     <Tag color="#f25e23">echarts</Tag>
                 </Descriptions.Item>
                 <Descriptions.Item label="Other Info">
-                👽 Memory not optimized yet 
+                    <span role="img" aria-label="alien">👽</span> Memory not optimized yet 
                     <br />
-                    👻 Authority control not added yet 
+                    <span role="img" aria-label="ghost">👻</span> Authority control not added yet 
                 </Descriptions.Item>
             </Descriptions>
 
