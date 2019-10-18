@@ -21,7 +21,6 @@ function Home() {
 
     useEffect(() => {
         getHomeInfo();
-
         return () => {
 
         }
