@@ -37,7 +37,7 @@ export default function request(options,isloading=true){
     },err=>{
         message.error("系统错误");
         console.log(err.message);
-        hideLoading()
+        if(isloading) hideLoading()
     });
     
     return instance(params);
