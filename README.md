@@ -2,7 +2,7 @@
 
 主要使用了react+redux+antd来完成搭建
 
-![Image home](./pic/img0.png)
+![Image home](http://pic.yupoo.com/jsmask/a5c74745/2b5ef5b4.png)
 
 ### `npm start`
 
@@ -13,7 +13,7 @@
 构建项目
 
 ### List:
-![Image list](./pic/img1.png)
+![Image list](http://pic.yupoo.com/jsmask/ccaafb00/2aeced22.png)
 
 ### Edit:
-![Image edit](./pic/img2.png)
+![Image edit](http://pic.yupoo.com/jsmask/9c095d25/13dcdd24.png)
