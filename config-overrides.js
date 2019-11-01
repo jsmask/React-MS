@@ -3,7 +3,15 @@ const path = require("path");
 function resolve(dir) {
   return path.join(__dirname, '.', dir);
 }
+
+const setpublicPath = () => config => {
+  config.output.publicPath=process.env.NODE_ENV === 'production' ? '/react-ms' : '/',
+  return config;
+};
+
+
 module.exports = override(
+  setpublicPath(),
   fixBabelImports('import', {
     libraryName: 'antd',
     libraryDirectory: 'es',
