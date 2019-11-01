@@ -2,6 +2,9 @@
 
 主要使用了react+redux+antd来完成搭建
 
+演示：https://jsmask.github.io/react-ms
+
+
 ![Image home](http://pic.yupoo.com/jsmask/a5c74745/2b5ef5b4.png)
 
 ### `npm start`
