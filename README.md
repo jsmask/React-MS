@@ -2,6 +2,8 @@
 
 主要使用了react+redux+antd来完成搭建
 
+异步按需加载各个模块
+
 演示：https://jsmask.github.io/react-ms
 
 
